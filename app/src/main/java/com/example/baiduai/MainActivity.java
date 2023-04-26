@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView before_img;
+    private ImageView face_dect_img1;
     private ActivityResultLauncher<Intent> resultLauncher;
 
     @Override
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 去除顶部标题
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        before_img = findViewById(R.id.init_img);
-        before_img.setOnClickListener(this);
+        face_dect_img1 = findViewById(R.id.face_dect_img1);
+        face_dect_img1.setOnClickListener(this);
 
         // 跳转到系统相册，选择图片并返回
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //获取选中图片的路径对象
                     Uri picUri = intent.getData();
                     if (picUri != null) {
-                        before_img.setImageURI(picUri);
+                        face_dect_img1.setImageURI(picUri);
                         Log.d("lyk", "picUri:" + picUri.toString());
                     }
                 }
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.init_img:
+            case R.id.face_dect_img1:
                 // 跳转到系统相册，选择图片，并返回
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 // 设置内容类型为图片类型

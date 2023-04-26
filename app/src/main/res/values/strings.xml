@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Baidu AI</string>
+    <string name="face_dect_title">人脸识别</string>
+    <string name="face_dect_supporting_text">每张图片最多标注数量为120，标注后的图片会自动保存至手机相册</string>
+    <string name="style_conversion">图像风格转换</string>
+    <string name="face_dect">开始识别</string>
 </resources>
