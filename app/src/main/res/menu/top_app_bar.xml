@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_favorite_24px"
+        android:title="@string/favorite"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/fece_dect"
+        android:title="@string/face_dect_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/image_colourize"
+        android:title="@string/image_colourize_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/style_conversion"
+        android:title="@string/style_conversion_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/image_dehazing"
+        android:title="@string/image_dehazing_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/contrast_enhance"
+        android:title="@string/contrast_enhance_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/image_definition_enhance"
+        android:title="@string/image_definition_enhance_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/color_enhance"
+        android:title="@string/color_enhance_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/image_denoise"
+        android:title="@string/image_denoise_title"
+        app:showAsAction="never" />
+
+</menu>

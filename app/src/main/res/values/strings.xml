@@ -1,7 +1,47 @@
 <resources>
     <string name="app_name">Baidu AI</string>
-    <string name="face_dect_title">人脸识别</string>
-    <string name="face_dect_supporting_text">每张图片最多标注数量为120，标注后的图片会自动保存至手机相册</string>
-    <string name="style_conversion">图像风格转换</string>
-    <string name="face_dect">开始识别</string>
+
+    <!-- button -->
+    <string name="button_name"> 显示转换后的效果 </string>
+
+    <!-- top_app_bar -->
+    <string name="page_title">Baidu AI</string>
+
+    <!-- favorite -->
+    <string name="favorite">支持</string>
+    <string name="content_description_favorite">支持</string>
+
+    <!-- face_detection -->
+    <string name="face_dect_title">人脸检测</string>
+    <string name="face_dect_supporting_text">检测图片中的人脸并标记出位置信息。检测响应速度，与图片中人脸数量相关，人脸数量较多时响应时间会有些许延长。</string>
+
+    <!-- image_colourize -->
+    <string name="image_colourize_title">黑白图像上色</string>
+    <string name="image_colourize_supporting_text">智能识别黑白图像内容并填充色彩，使黑白图像变得鲜活。</string>
+
+    <!-- style_conversion -->
+    <string name="style_conversion_title">图像风格转换</string>
+    <string name="style_conversion_supporting_text">可将图像转化成卡通画、铅笔画、彩色铅笔画，或者哥特油画、彩色糖块油画、呐喊油画、神奈川冲浪里油画、奇异油画、薰衣草油画等共计9种风格，可用于开展趣味活动，或集成到美图应用中对图像进行风格转换。</string>
+
+    <!-- image_dehazing -->
+    <string name="image_dehazing_title">图像去雾</string>
+    <string name="image_dehazing_supporting_text">对浓雾天气下拍摄，导致细节无法辨认的图像进行去雾处理，还原更清晰真实的图像。</string>
+
+    <!-- contrast_enhance -->
+    <string name="contrast_enhance_title">图像对比度增强</string>
+    <string name="contrast_enhance_supporting_text">调整过暗或者过亮图像的对比度，使图像更加鲜明。</string>
+
+    <!-- image_definition_enhance -->
+    <string name="image_definition_enhance_title">图像清晰度增强</string>
+    <string name="image_definition_enhance_supporting_text">对压缩后的模糊图像实现智能快速去噪，优化图像纹理细节，使画面更加自然清晰。</string>
+
+    <!-- color_enhance -->
+    <string name="color_enhance_title">图像色彩增强</string>
+    <string name="color_enhance_supporting_text">可智能调节图片的色彩饱和度、亮度、对比度，使得图片内容细节、色彩更加逼真，可用于提升网站图片、手机相册图片、视频封面图片的质量。</string>
+
+    <!-- image_denoise -->
+    <string name="image_denoise_title">图像去噪</string>
+    <string name="image_denoise_supporting_text">自动识别图片内（由成像设备或者外部环境导致的）噪点，进行去噪处理，使得图像更加干净，细节更加突出。常见应用场景为老照片修复、监控图片处理。</string>
+
+
 </resources>

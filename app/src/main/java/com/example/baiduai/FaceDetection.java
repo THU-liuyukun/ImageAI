@@ -5,28 +5,23 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class FaceDetection extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView face_dect_img1;
     private ActivityResultLauncher<Intent> resultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // 去除顶部标题
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.face_detection);
         face_dect_img1 = findViewById(R.id.face_dect_img1);
         face_dect_img1.setOnClickListener(this);
 
