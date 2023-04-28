@@ -16,12 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.baiduai.utils.PermissionUtils;
+import com.example.baiduai.utils.ToolbarUtils;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
-public class FaceDetection extends AppCompatActivity implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
+public class FaceDetection extends AppCompatActivity implements View.OnClickListener {
 
+    private ToolbarUtils mToolbarUtils;
     private ImageView face_dect_img1;
     private ActivityResultLauncher<Intent> resultLauncher;
     private ImageView top_app_bar_image;
@@ -39,10 +41,11 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
         face_dect_img1.setOnClickListener(this);
 
         // topAppBar
-        top_app_bar_image = findViewById(R.id.topAppBarImage);
-        top_app_bar = findViewById(R.id.topAppBar);
-        top_app_bar.setOnMenuItemClickListener(this);
-        top_app_bar_image.setOnClickListener(this);
+//        top_app_bar_image = findViewById(R.id.topAppBarImage);
+//        top_app_bar = findViewById(R.id.topAppBar);
+//        top_app_bar.setOnMenuItemClickListener(this);
+//        top_app_bar_image.setOnClickListener(this);
+        mToolbarUtils = new ToolbarUtils(this);
 
         // 跳转到系统相册，选择图片并返回
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -79,37 +82,38 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
                 // 打开系统相册，并等待图片选择结果
                 resultLauncher.launch(intent);
                 break;
-            case R.id.topAppBarImage:
-                Snackbar.make(v, R.string.snackbar_text_label, Snackbar.LENGTH_SHORT).show();
+//            case R.id.topAppBarImage:
+//                Snackbar.make(v, R.string.snackbar_text_label, Snackbar.LENGTH_SHORT).show();
+//                break;
         }
     }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.tips:
-                new MaterialAlertDialogBuilder(this)
-                        .setTitle(this.getResources().getString(R.string.tips_title))
-                        .setMessage(this.getResources().getString(R.string.tips_supporting_text))
-                        .setPositiveButton(this.getResources().getString(R.string.btn_close), (dialog, which) -> {
-                        })
-                        .show();
-                return true;
-            case R.id.favorite:
-                MaterialAlertDialogBuilder favoriteDialogBuilder = new MaterialAlertDialogBuilder(this)
-                        .setTitle(this.getResources().getString(R.string.favorite_title))
-                        .setMessage(this.getResources().getString(R.string.favorite_supporting_text));
-
-                ImageView imageView = new ImageView(this);
-                imageView.setImageResource(R.drawable.github);
-                favoriteDialogBuilder.setView(imageView);
-
-                favoriteDialogBuilder.setPositiveButton(this.getResources().getString(R.string.btn_close), (dialog, which) -> {
-                        })
-                        .show();
-                return true;
-            default:
-                return false;
-        }
-    }
+//    @Override
+//    public boolean onMenuItemClick(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.tips:
+//                new MaterialAlertDialogBuilder(this)
+//                        .setTitle(this.getResources().getString(R.string.tips_title))
+//                        .setMessage(this.getResources().getString(R.string.tips_supporting_text))
+//                        .setPositiveButton(this.getResources().getString(R.string.btn_close), (dialog, which) -> {
+//                        })
+//                        .show();
+//                return true;
+//            case R.id.favorite:
+//                MaterialAlertDialogBuilder favoriteDialogBuilder = new MaterialAlertDialogBuilder(this)
+//                        .setTitle(this.getResources().getString(R.string.favorite_title))
+//                        .setMessage(this.getResources().getString(R.string.favorite_supporting_text));
+//
+//                ImageView imageView = new ImageView(this);
+//                imageView.setImageResource(R.drawable.github);
+//                favoriteDialogBuilder.setView(imageView);
+//
+//                favoriteDialogBuilder.setPositiveButton(this.getResources().getString(R.string.btn_close), (dialog, which) -> {
+//                        })
+//                        .show();
+//                return true;
+//            default:
+//                return false;
+//        }
+//    }
 }
