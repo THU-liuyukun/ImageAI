@@ -29,6 +29,7 @@
                 app:statusBarScrim="?attr/colorPrimaryVariant">
 
                 <ImageView
+                    android:id="@+id/topAppBarImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/spiderman"
@@ -42,7 +43,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:menu="@menu/top_app_bar"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@drawable/baidu"
+                    app:navigationIcon="@drawable/ic_baidu"
                     app:title="@string/page_title"
                     android:elevation="0dp"
                     android:background="@android:color/transparent"
@@ -72,7 +73,6 @@
                     android:layout_marginTop="5dp">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/face_dect_card1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -86,7 +86,7 @@
                             android:id="@+id/face_dect_img1"
                             android:layout_width="match_parent"
                             android:layout_height="190dp"
-                            android:src="@drawable/add_photo_alternate_24px" />
+                            android:src="@drawable/add_image_24px" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -100,7 +100,6 @@
                     android:weightSum="12">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/face_dect_card2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -128,7 +127,7 @@
                     android:weightSum="12">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/face_dect_card3"
+                        android:id="@+id/face_dect_card"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -177,7 +176,7 @@
                         style="@style/Widget.MaterialComponents.Button.Icon"
                         android:minLines="2"
                         android:text="@string/button_name"
-                        app:icon="@drawable/magic_button_24px"/>
+                        app:icon="@drawable/ic_magic_button_24px"/>
 
                 </LinearLayout>
             </LinearLayout>

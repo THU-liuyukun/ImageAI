@@ -3,13 +3,21 @@
 
     <!-- button -->
     <string name="button_name"> 显示转换后的效果 </string>
+    <string name="btn_close">关闭</string>
 
     <!-- top_app_bar -->
     <string name="page_title">Baidu AI</string>
 
+    <!-- tips -->
+    <string name="tips_title">应用介绍</string>
+    <string name="tips_supporting_text">这是一个对图片进行处理的应用，提供一张图片，可以经过以下处理：\n· 人脸检测\n· 黑白图像上色\n· 图像风格转换\n· 图像去雾\n· 图像对比度增强\n· 图像清晰度增强\n· 图像色彩增强\n· 图像去噪\n\n这个APP只是作者的一个作业，使用上有很多不足需要改进，望海涵！</string>
+
     <!-- favorite -->
-    <string name="favorite">支持</string>
-    <string name="content_description_favorite">支持</string>
+    <string name="favorite_title">喜欢</string>
+    <string name="favorite_supporting_text">如果你喜欢这个应用，可以来我的github主页，留下你对它的一些看法。\n\n这是我的github账户：</string>
+
+    <!-- snackbar -->
+    <string name="snackbar_text_label">这是一个很炫酷的图片。</string>
 
     <!-- face_detection -->
     <string name="face_dect_title">人脸检测</string>
