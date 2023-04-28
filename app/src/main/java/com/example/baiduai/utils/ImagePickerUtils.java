@@ -50,5 +50,4 @@ public class ImagePickerUtils {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
-
 }

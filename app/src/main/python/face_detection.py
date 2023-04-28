@@ -1,8 +1,8 @@
 # 人脸检测
 import math
-import cv2
 from utils.img_and_base64 import *
 from utils.baidu import *
+import numpy as np
 
 api_key = "eKYsErw8YTG84q5QWlATb3Sm"
 secret_key = "5hvA5tpYImo1OvHGWh9grAAx9UHKND2q"
@@ -29,13 +29,18 @@ def face_detect(img_base64):
         return response.json()
 
 
-def main(img_path, save_img_path):
-    img_base64 = img_to_base64(img_path)
+def main(img_base64):
 
     result = face_detect(img_base64)['result']
     face_num = result['face_num']
     face_list = result['face_list']
-    img = cv2.imread(img_path, cv2.IMREAD_COLOR)
+
+    # 将 base64 字符串解码为二进制数据
+    img_data = base64.b64decode(img_base64)
+    # 将二进制数据转换为 NumPy 数组
+    np_array = np.frombuffer(img_data, np.uint8)
+    # 读取图像
+    img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
 
     for i in range(face_num):
         location = face_list[i]['location']
@@ -65,7 +70,4 @@ def main(img_path, save_img_path):
         cv2.line(img, C, D, (0, 255, 0), 2)
         cv2.line(img, D, A, (0, 255, 0), 2)
 
-    cv2.imwrite(save_img_path, img)
-
-if __name__ == '__main__':
-    main("before_imgs/exo.jpg", "after_imgs/exo.jpg")
+    return cv2_to_base64(img)

@@ -1,6 +1,7 @@
 package com.example.baiduai;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,14 +9,24 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
+import com.example.baiduai.utils.ImageUtils;
 import com.example.baiduai.utils.PermissionUtils;
 import com.example.baiduai.utils.ToolbarUtils;
+import com.chaquo.python.Kwarg;
+import com.chaquo.python.PyObject;
+import com.chaquo.python.android.AndroidPlatform;
+import com.chaquo.python.Python;
 
 public class FaceDetection extends AppCompatActivity implements View.OnClickListener {
 
     private ToolbarUtils mToolbarUtils;
     private ImageView face_dect_img1;
+    private String base64Image = null;
+    private ImageView face_dect_img2;
+    private Python py;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +42,14 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
         // 选择图片
         face_dect_img1 = findViewById(R.id.face_dect_img1);
         face_dect_img1.setOnClickListener(this);
-    }
 
-    // 动态申请权限
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        PermissionUtils.handlePermissionsResult(this, requestCode, permissions, grantResults);
+        // 显示图片
+        face_dect_img2 = findViewById(R.id.face_dect_img2);
+
+        findViewById(R.id.btn_face_dect).setOnClickListener(this);
+
+        initPython();
+        py = Python.getInstance();
     }
 
     @Override
@@ -47,15 +59,32 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
                 // 选择图片
                 ImagePickerUtils.pickImage(this, face_dect_img1);
                 break;
+
+            case R.id.btn_face_dect:
+                PyObject obj1 = py.getModule("face_detection")
+                        .callAttr("main", new Kwarg("img_base64", base64Image));
+                base64Image = obj1.toJava(String.class);
+                ImageUtils.saveBase64ImageToGallery(v, face_dect_img2,this, base64Image);
+                break;
         }
     }
 
-    // 处理选择的图片的base64
+    // 将选择的图片的转成base64
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String base64Image = ImagePickerUtils.handleActivityResult(this, requestCode, resultCode, data, face_dect_img1);
-        if (base64Image != null) {
-            Log.d("lyk", base64Image);
+        base64Image = ImagePickerUtils.handleActivityResult(this, requestCode, resultCode, data, face_dect_img1);
+    }
+
+    // 动态申请权限
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionUtils.handlePermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
+    void initPython() {
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
         }
     }
 }

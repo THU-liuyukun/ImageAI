@@ -1,11 +1,12 @@
+import cv2
 import base64
 
+def cv2_to_base64(img):
 
-def img_to_base64(img_path):
-    with open(img_path, "rb") as f:
-        base64_data = base64.b64encode(f.read()).decode("utf8")
-    return base64_data
+    # 将图片转换为JPEG格式的字节流
+    _, img_encoded = cv2.imencode('.jpg', img)
 
-def base64_to_img(img_base64):
-    img = base64.b64decode(img_base64)
-    return img
+    # 将字节流转换为base64编码
+    img_base64 = base64.b64encode(img_encoded).decode('utf-8')
+    return img_base64
+
