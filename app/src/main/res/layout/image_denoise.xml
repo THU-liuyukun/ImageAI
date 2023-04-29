@@ -43,7 +43,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:menu="@menu/top_app_bar"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@drawable/ic_baidu"
+                    app:navigationIcon="@drawable/ic_apple"
                     app:title="@string/page_title"
                     android:elevation="0dp"
                     android:background="@android:color/transparent"

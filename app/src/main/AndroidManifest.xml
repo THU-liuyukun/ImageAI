@@ -16,7 +16,7 @@
         android:theme="@style/Theme.BaiduAI" >
 
         <activity
-            android:name=".StyleConversion"
+            android:name=".FaceDetection"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,7 +56,7 @@
         </activity>
 
         <activity
-            android:name=".FaceDetection"
+            android:name=".StyleConversion"
             android:exported="true" >
         </activity>
 
