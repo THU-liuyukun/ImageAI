@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ColorEnhance">
+    tools:context=".ImageDehazing">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -92,16 +92,80 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/color_enhance_title"
+                                android:text="@string/image_denoise_title"
                                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="@string/color_enhance_supporting_text"
+                                android:text="@string/image_denoise_supporting_text"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:gravity="center"
+                    android:weightSum="12">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_option"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:layout_weight="11"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardElevation="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/image_denoise_intensity_title"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/image_denoise_intensity_supporting_text"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/image_denoise_intensity"
+                                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                                <com.google.android.material.slider.Slider
+                                    android:id="@+id/intensity_slider"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:value="0.0"
+                                    android:valueFrom="0.0"
+                                    android:valueTo="200.0" />
+                            </LinearLayout>
 
                         </LinearLayout>
 

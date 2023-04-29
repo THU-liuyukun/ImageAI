@@ -50,6 +50,9 @@
     <!-- image_denoise -->
     <string name="image_denoise_title">图像去噪</string>
     <string name="image_denoise_supporting_text">自动识别图片内（由成像设备或者外部环境导致的）噪点，进行去噪处理，使得图像更加干净，细节更加突出。常见应用场景为老照片修复、监控图片处理。</string>
+    <string name="image_denoise_intensity_title">设置去噪强度</string>
+    <string name="image_denoise_intensity_supporting_text">调节去噪强度，产生不同效果的去噪图，可根据期望进行效果调试</string>
+    <string name="image_denoise_intensity">intensity：</string>
 
 
 </resources>
