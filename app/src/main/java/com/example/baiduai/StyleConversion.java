@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,10 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
     private String base64Image = null;
     private ImageView img2;
     private Python py;
+    private RadioGroup radio_group;
+    private int checkedRadioButtonId;
+    private RadioButton checkedRadioButton;
+    private String style_selection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,8 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
         // 显示图片
         img2 = findViewById(R.id.img2);
 
+        radio_group = findViewById(R.id.style_conversion_radio_group);
+
         findViewById(R.id.btn_main).setOnClickListener(this);
 
         initPython();
@@ -52,8 +60,14 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_main:
+                checkedRadioButtonId = radio_group.getCheckedRadioButtonId();
+                checkedRadioButton = findViewById(checkedRadioButtonId);
+                style_selection = checkedRadioButton.getText().toString();
+
                 PyObject obj1 = py.getModule("style_conversion")
-                        .callAttr("main", new Kwarg("img_base64", base64Image));
+                        .callAttr("main",
+                                new Kwarg("img_base64", base64Image),
+                                new Kwarg("style", style_selection));
                 base64Image = obj1.toJava(String.class);
                 ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
                 break;

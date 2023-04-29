@@ -25,7 +25,7 @@ def style_con(img_base64, option):
     if response:
         return response.json()['image']
 
-def main(style, img_base64):
+def main(img_base64, style):
     options = {
         '卡通画风格': 'cartoon',
         '铅笔风格': 'pencil',
