@@ -16,7 +16,7 @@
         android:theme="@style/Theme.BaiduAI" >
 
         <activity
-            android:name=".ImageDenoise"
+            android:name=".StyleConversion"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,10 +50,10 @@
             android:exported="true" >
         </activity>
 
-<!--        <activity-->
-<!--            android:name=".ImageDenoise"-->
-<!--            android:exported="true" >-->
-<!--        </activity>-->
+        <activity
+            android:name=".ImageDenoise"
+            android:exported="true" >
+        </activity>
 
     </application>
 

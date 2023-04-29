@@ -30,6 +30,17 @@
     <!-- style_conversion -->
     <string name="style_conversion_title">图像风格转换</string>
     <string name="style_conversion_supporting_text">可将图像转化成卡通画、铅笔画、彩色铅笔画，或者哥特油画、彩色糖块油画、呐喊油画、神奈川冲浪里油画、奇异油画、薰衣草油画等共计9种风格，可用于开展趣味活动，或集成到美图应用中对图像进行风格转换。</string>
+    <string name="style_conversion_selection_title">选择转换风格</string>
+    <string name="style_cartoon">卡通画风格</string>
+    <string name="style_pencil">铅笔画风格</string>
+    <string name="style_color_pencil">彩色铅笔画风格</string>
+    <string name="style_warm">彩色糖块油画风格</string>
+    <string name="style_wave">神奈川冲浪里油画风格</string>
+    <string name="style_lavender">薰衣草油画风格</string>
+    <string name="style_mononoke">奇异油画风格</string>
+    <string name="style_scream">呐喊油画风格</string>
+    <string name="style_gothic">哥特油画风格</string>
+
 
     <!-- image_dehazing -->
     <string name="image_dehazing_title">图像去雾</string>
