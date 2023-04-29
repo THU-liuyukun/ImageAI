@@ -2,9 +2,11 @@ package com.example.baiduai;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chaquo.python.Kwarg;
@@ -14,13 +16,16 @@ import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
 import com.example.baiduai.utils.ToolbarUtils;
+import com.google.android.material.slider.Slider;
 
-public class ImageDenoise extends AppCompatActivity implements View.OnClickListener {
+public class ImageDenoise extends AppCompatActivity implements View.OnClickListener, Slider.OnChangeListener {
     private ToolbarUtils mToolbarUtils;
     private ImageView img1;
     private String base64Image = null;
     private ImageView img2;
     private Python py;
+    private Slider slider;
+    private String intensity = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,8 @@ public class ImageDenoise extends AppCompatActivity implements View.OnClickListe
         img2 = findViewById(R.id.img2);
 
         // 去噪强度
-        findViewById(R.id.intensity_slider);
+        slider = findViewById(R.id.intensity_slider);
+        slider.addOnChangeListener(this);
 
         findViewById(R.id.btn_main).setOnClickListener(this);
 
@@ -56,11 +62,20 @@ public class ImageDenoise extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btn_main:
                 PyObject obj1 = py.getModule("image_denoise")
-                        .callAttr("main", new Kwarg("img_base64", base64Image));
+                        .callAttr("main",
+                                new Kwarg("img_base64", base64Image),
+                                new Kwarg("intensity", intensity));
                 base64Image = obj1.toJava(String.class);
                 ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
                 break;
         }
+    }
+
+    @Override
+    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+        int intValue = (int) value;
+        intensity = String.valueOf(intValue);
+        Log.d("lyk", intensity);
     }
 
     // 将选择的图片的转成base64
@@ -74,4 +89,5 @@ public class ImageDenoise extends AppCompatActivity implements View.OnClickListe
             Python.start(new AndroidPlatform(this));
         }
     }
+
 }
