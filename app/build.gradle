@@ -18,7 +18,7 @@ android {
 
         ndk {
             // 如果想压缩apk，则删去x86
-            abiFilters "armeabi-v7a"
+            abiFilters "armeabi-v7a", "x86"
         }
 
         python {
@@ -35,8 +35,8 @@ android {
     buildTypes {
         release {
             // 如果想压缩apk，则将minifyEnabled和shrinkResources设为true
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
