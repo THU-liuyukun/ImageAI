@@ -16,7 +16,7 @@
         android:theme="@style/Theme.BaiduAI" >
 
         <activity
-            android:name=".ImageColourize"
+            android:name=".FaceDetection"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,10 +35,21 @@
             android:exported="true" >
         </activity>
 
-<!--        <activity-->
-<!--            android:name=".ImageColourize"-->
-<!--            android:exported="true" >-->
-<!--        </activity>-->
+        <activity
+            android:name=".ImageColourize"
+            android:exported="true" >
+        </activity>
+
+        <activity
+            android:name=".ImageDefinitionEnhance"
+            android:exported="true" >
+        </activity>
+
+        <activity
+            android:name=".ImageDehazing"
+            android:exported="true" >
+        </activity>
+
     </application>
 
 </manifest>
