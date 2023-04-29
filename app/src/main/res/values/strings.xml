@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Baidu AI</string>
+    <string name="app_name">ImageAI</string>
 
     <!-- button -->
     <string name="button_name"> 显示转换后的效果 </string>
     <string name="btn_close">关闭</string>
 
     <!-- top_app_bar -->
-    <string name="page_title">Baidu AI</string>
+    <string name="page_title">Image Processing AI</string>
 
     <!-- tips -->
     <string name="tips_title">应用介绍</string>
