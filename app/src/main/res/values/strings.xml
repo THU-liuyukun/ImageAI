@@ -6,7 +6,7 @@
     <string name="btn_close">关闭</string>
 
     <!-- top_app_bar -->
-    <string name="page_title">Image Processing AI</string>
+    <string name="page_title">ImageAI</string>
 
     <!-- tips -->
     <string name="tips_title">应用介绍</string>
