@@ -146,14 +146,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/face_dect_title"
+                                android:text="@string/image_colourize_title"
                                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="@string/face_dect_supporting_text"
+                                android:text="@string/image_colourize_supporting_text"
                                 android:textAppearance="?attr/textAppearanceBody2"
                                 android:textColor="?android:attr/textColorSecondary" />
 

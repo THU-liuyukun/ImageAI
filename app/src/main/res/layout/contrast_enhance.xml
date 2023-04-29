@@ -96,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="-20dp"
+                    android:layout_marginTop="-10dp"
                     android:weightSum="12">
 
                     <com.google.android.material.card.MaterialCardView
@@ -122,7 +122,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-20dp"
+                    android:layout_marginTop="-10dp"
                     android:gravity="center"
                     android:weightSum="12">
 
@@ -166,8 +166,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_marginTop="-6dp"
-                    android:layout_marginBottom="14dp">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="80dp">
 
                     <Button
                         android:id="@+id/btn_main"
