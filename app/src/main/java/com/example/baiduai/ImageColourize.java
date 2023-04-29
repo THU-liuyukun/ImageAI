@@ -47,15 +47,17 @@ public class ImageColourize extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img1:
-                // 选择图片
                 ImagePickerUtils.pickImage(this, img1);
                 break;
 
             case R.id.btn_main:
-                PyObject obj1 = py.getModule("image_colourize")
-                        .callAttr("main", new Kwarg("img_base64", base64Image));
-                base64Image = obj1.toJava(String.class);
-                ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
+                Thread thread = new Thread(() -> {
+                    PyObject obj1 = py.getModule("image_colourize")
+                            .callAttr("main", new Kwarg("img_base64", base64Image));
+                    base64Image = obj1.toJava(String.class);
+                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,ImageColourize.this, base64Image));
+                });
+                thread.start();
                 break;
         }
     }

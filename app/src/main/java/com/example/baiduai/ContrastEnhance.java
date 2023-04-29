@@ -52,10 +52,13 @@ public class ContrastEnhance extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_main:
-                PyObject obj1 = py.getModule("contrast_enhance")
-                        .callAttr("main", new Kwarg("img_base64", base64Image));
-                base64Image = obj1.toJava(String.class);
-                ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
+                Thread thread = new Thread(() -> {
+                    PyObject obj1 = py.getModule("contrast_enhance")
+                            .callAttr("main", new Kwarg("img_base64", base64Image));
+                    base64Image = obj1.toJava(String.class);
+                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,ContrastEnhance.this, base64Image));
+                });
+                thread.start();
                 break;
         }
     }

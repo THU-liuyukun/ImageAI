@@ -6,6 +6,24 @@
 
 将`values\themes.xml`的`<style>`的parent属性的值从**DarkActionBar**修改成**NoActionBar**
 
+## 将耗时任务放到子线程
+
+创建了一个Thread对象，在子线程中执行的代码放到了Runnable对象中。Runnable用lambda替换了。
+
+在Runnable对象的run方法中，调用py.getModule和ImageUtils.saveBase64ImageToGallery两个操作。并在获取完结果后使用runOnUiThread方法将结果传递回UI线程，最后在UI线程中更新ImageView的显示。
+
+## 页面跳转
+
+跳转到指定的活动页面，将启动标志设置为：`FLAG_ACTIVITY_CLEAR_TASK`和`FLAG_ACTIVITY_NEW_TASK`，即跳转到新页面时，清空栈中原有的实例，并启动一个新任务的活动栈。
+
+代码示例如下：
+
+```
+Intent intent = new Intent(mActivity, StyleConversion.class);
+intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+mActivity.startActivity(intent);
+```
+
 ## tips
 
 > 解释一下`app/src/main/java/com.example.baiduai/utils/ImagePickerUtils.java`中为什么pickImage这个方法中`setImageView(imageView, null);`这里的bitmap值始终设为null，但选择图片后仍会显示在ImageView的原因：

@@ -52,10 +52,13 @@ public class ImageDehazing extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_main:
-                PyObject obj1 = py.getModule("image_dehazing")
-                        .callAttr("main", new Kwarg("img_base64", base64Image));
-                base64Image = obj1.toJava(String.class);
-                ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
+                Thread thread = new Thread(() -> {
+                    PyObject obj1 = py.getModule("image_dehazing")
+                            .callAttr("main", new Kwarg("img_base64", base64Image));
+                    base64Image = obj1.toJava(String.class);
+                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,ImageDehazing.this, base64Image));
+                });
+                thread.start();
                 break;
         }
     }

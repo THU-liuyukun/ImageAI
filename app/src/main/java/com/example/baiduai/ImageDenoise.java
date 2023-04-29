@@ -61,12 +61,15 @@ public class ImageDenoise extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_main:
-                PyObject obj1 = py.getModule("image_denoise")
-                        .callAttr("main",
-                                new Kwarg("img_base64", base64Image),
-                                new Kwarg("intensity", intensity));
-                base64Image = obj1.toJava(String.class);
-                ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
+                Thread thread = new Thread(() -> {
+                    PyObject obj1 = py.getModule("image_denoise")
+                            .callAttr("main",
+                                    new Kwarg("img_base64", base64Image),
+                                    new Kwarg("intensity", intensity));
+                    base64Image = obj1.toJava(String.class);
+                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,ImageDenoise.this, base64Image));
+                });
+                thread.start();
                 break;
         }
     }
@@ -75,7 +78,6 @@ public class ImageDenoise extends AppCompatActivity implements View.OnClickListe
     public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
         int intValue = (int) value;
         intensity = String.valueOf(intValue);
-        Log.d("lyk", intensity);
     }
 
     // 将选择的图片的转成base64

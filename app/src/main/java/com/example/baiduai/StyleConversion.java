@@ -60,16 +60,19 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_main:
-                checkedRadioButtonId = radio_group.getCheckedRadioButtonId();
-                checkedRadioButton = findViewById(checkedRadioButtonId);
-                style_selection = checkedRadioButton.getText().toString();
+                Thread thread = new Thread(() -> {
+                    checkedRadioButtonId = radio_group.getCheckedRadioButtonId();
+                    checkedRadioButton = findViewById(checkedRadioButtonId);
+                    style_selection = checkedRadioButton.getText().toString();
 
-                PyObject obj1 = py.getModule("style_conversion")
-                        .callAttr("main",
-                                new Kwarg("img_base64", base64Image),
-                                new Kwarg("style", style_selection));
-                base64Image = obj1.toJava(String.class);
-                ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
+                    PyObject obj1 = py.getModule("style_conversion")
+                            .callAttr("main",
+                                    new Kwarg("img_base64", base64Image),
+                                    new Kwarg("style", style_selection));
+                    base64Image = obj1.toJava(String.class);
+                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,StyleConversion.this, base64Image));
+                });
+                thread.start();
                 break;
         }
     }

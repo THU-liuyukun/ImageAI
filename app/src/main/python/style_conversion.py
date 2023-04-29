@@ -28,7 +28,7 @@ def style_con(img_base64, option):
 def main(img_base64, style):
     options = {
         '卡通画风格': 'cartoon',
-        '铅笔风格': 'pencil',
+        '铅笔画风格': 'pencil',
         '彩色铅笔画风格': 'color_pencil',
         '彩色糖块油画风格': 'warm',
         '神奈川冲浪里油画风格': 'wave',
