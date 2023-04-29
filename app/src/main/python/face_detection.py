@@ -32,6 +32,9 @@ def face_detect(img_base64):
 def main(img_base64):
 
     result = face_detect(img_base64)['result']
+    if result is None:
+        return img_base64
+
     face_num = result['face_num']
     face_list = result['face_list']
 

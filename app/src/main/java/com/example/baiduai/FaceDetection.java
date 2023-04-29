@@ -1,31 +1,27 @@
 package com.example.baiduai;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.chaquo.python.Kwarg;
+import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
 import com.example.baiduai.utils.PermissionUtils;
 import com.example.baiduai.utils.ToolbarUtils;
-import com.chaquo.python.Kwarg;
-import com.chaquo.python.PyObject;
-import com.chaquo.python.android.AndroidPlatform;
-import com.chaquo.python.Python;
 
 public class FaceDetection extends AppCompatActivity implements View.OnClickListener {
 
     private ToolbarUtils mToolbarUtils;
-    private ImageView face_dect_img1;
+    private ImageView img1;
     private String base64Image = null;
-    private ImageView face_dect_img2;
+    private ImageView img2;
     private Python py;
 
     @Override
@@ -40,13 +36,13 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
         mToolbarUtils = new ToolbarUtils(this);
 
         // 选择图片
-        face_dect_img1 = findViewById(R.id.face_dect_img1);
-        face_dect_img1.setOnClickListener(this);
+        img1 = findViewById(R.id.img1);
+        img1.setOnClickListener(this);
 
         // 显示图片
-        face_dect_img2 = findViewById(R.id.face_dect_img2);
+        img2 = findViewById(R.id.img2);
 
-        findViewById(R.id.btn_face_dect).setOnClickListener(this);
+        findViewById(R.id.btn_main).setOnClickListener(this);
 
         initPython();
         py = Python.getInstance();
@@ -55,16 +51,16 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.face_dect_img1:
+            case R.id.img1:
                 // 选择图片
-                ImagePickerUtils.pickImage(this, face_dect_img1);
+                ImagePickerUtils.pickImage(this, img1);
                 break;
 
-            case R.id.btn_face_dect:
+            case R.id.btn_main:
                 PyObject obj1 = py.getModule("face_detection")
                         .callAttr("main", new Kwarg("img_base64", base64Image));
                 base64Image = obj1.toJava(String.class);
-                ImageUtils.saveBase64ImageToGallery(v, face_dect_img2,this, base64Image);
+                ImageUtils.saveBase64ImageToGallery(v,img2,this, base64Image);
                 break;
         }
     }
@@ -72,7 +68,7 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
     // 将选择的图片的转成base64
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        base64Image = ImagePickerUtils.handleActivityResult(this, requestCode, resultCode, data, face_dect_img1);
+        base64Image = ImagePickerUtils.handleActivityResult(this, requestCode, resultCode, data, img1);
     }
 
     // 动态申请权限

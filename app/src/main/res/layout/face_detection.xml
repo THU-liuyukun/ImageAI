@@ -83,7 +83,7 @@
                         app:cardElevation="5dp">
 
                         <ImageView
-                            android:id="@+id/face_dect_img1"
+                            android:id="@+id/img1"
                             android:layout_width="match_parent"
                             android:layout_height="215dp"
                             android:src="@drawable/add_image_24px" />
@@ -110,7 +110,7 @@
                         app:cardElevation="5dp">
 
                         <ImageView
-                            android:id="@+id/face_dect_img2"
+                            android:id="@+id/img2"
                             android:layout_width="match_parent"
                             android:layout_height="215dp"
                             android:src="@drawable/image_24px"/>
@@ -127,7 +127,7 @@
                     android:weightSum="12">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/face_dect_card"
+                        android:id="@+id/card"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -170,7 +170,7 @@
                     android:layout_marginBottom="14dp">
 
                     <Button
-                        android:id="@+id/btn_face_dect"
+                        android:id="@+id/btn_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.Button.Icon"
