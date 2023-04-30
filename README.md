@@ -1,4 +1,4 @@
-![](imgs\page.jpg)
+![](imgs/page1.jpg)
 
 # ImageAI：一个对图片进行AI处理的APP
 
