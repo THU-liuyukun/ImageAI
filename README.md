@@ -1,4 +1,4 @@
-![](imgs/page1.jpg)
+<img src="imgs/page1.jpg" style="zoom: 30%" alt="APP页面展示" align="center" />
 
 # ImageAI：一个对图片进行AI处理的APP
 
