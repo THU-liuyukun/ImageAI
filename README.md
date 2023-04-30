@@ -4,7 +4,7 @@
 
 # ImageAI：一个对图片进行AI处理的APP
 
-**APP下载：**
+**APP下载：** [ImageAI.apk](app/release/ImageAI.apk)
 
 ## 0. 关于本项目
 
