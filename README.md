@@ -1,4 +1,4 @@
-![](D:\Android\AndroidStudioProjects\Baidu-AI\imgs\page1.jpg)
+![](imgs\page.jpg)
 
 # ImageAI：一个对图片进行AI处理的APP
 
