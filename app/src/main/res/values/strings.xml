@@ -3,6 +3,7 @@
 
     <!-- button -->
     <string name="button_name"> 显示转换后的效果 </string>
+    <string name="button_waiting"> AI正在努力转换中 </string>
     <string name="btn_close">关闭</string>
 
     <!-- top_app_bar -->

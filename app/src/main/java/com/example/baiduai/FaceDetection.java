@@ -3,6 +3,7 @@ package com.example.baiduai;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
     private String base64Image = null;
     private ImageView img2;
     private Python py;
+    private Button btn_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,8 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
         // 显示图片
         img2 = findViewById(R.id.img2);
 
-        findViewById(R.id.btn_main).setOnClickListener(this);
+        btn_main = findViewById(R.id.btn_main);
+        btn_main.setOnClickListener(this);
 
         initPython();
         py = Python.getInstance();
@@ -57,11 +60,19 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_main:
+                btn_main.setEnabled(false);
+                btn_main.setText(R.string.button_waiting);
                 Thread thread = new Thread(() -> {
+                    // 在子线程中执行耗时操作
                     PyObject obj1 = py.getModule("face_detection")
                             .callAttr("main", new Kwarg("img_base64", base64Image));
                     base64Image = obj1.toJava(String.class);
-                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,FaceDetection.this, base64Image));
+                    runOnUiThread(() -> {
+                        // 切换到主线程，恢复按钮的可用状态
+                        btn_main.setEnabled(true);
+                        btn_main.setText(R.string.button_name);
+                        ImageUtils.saveBase64ImageToGallery(v, img2, FaceDetection.this, base64Image);
+                    });
                 });
                 thread.start();
                 break;

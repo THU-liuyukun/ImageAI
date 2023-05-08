@@ -3,6 +3,7 @@ package com.example.baiduai;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class ColorEnhance extends AppCompatActivity implements View.OnClickListe
     private String base64Image = null;
     private ImageView img2;
     private Python py;
+    private Button btn_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class ColorEnhance extends AppCompatActivity implements View.OnClickListe
         // 显示图片
         img2 = findViewById(R.id.img2);
 
-        findViewById(R.id.btn_main).setOnClickListener(this);
+        btn_main = findViewById(R.id.btn_main);
+        btn_main.setOnClickListener(this);
 
         initPython();
         py = Python.getInstance();
@@ -52,11 +55,17 @@ public class ColorEnhance extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_main:
+                btn_main.setEnabled(false);
+                btn_main.setText(R.string.button_waiting);
                 Thread thread = new Thread(() -> {
                     PyObject obj1 = py.getModule("color_enhance")
                             .callAttr("main", new Kwarg("img_base64", base64Image));
                     base64Image = obj1.toJava(String.class);
-                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,ColorEnhance.this, base64Image));
+                    runOnUiThread(() -> {
+                        btn_main.setEnabled(true);
+                        btn_main.setText(R.string.button_name);
+                        ImageUtils.saveBase64ImageToGallery(v, img2, ColorEnhance.this, base64Image);
+                    });
                 });
                 thread.start();
                 break;

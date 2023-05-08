@@ -91,3 +91,9 @@ APK压缩参考：
 + [Android性能优化之APK 极限压缩](https://cloud.tencent.com/developer/article/1512087)
 
 + [Android Apk瘦身优化](https://www.jianshu.com/p/ed03e75be736)
+
+## 5. 一些解决Android问题的参考资源
+
++ [Android Studio模拟器联网](https://blog.csdn.net/AngryPotatoLucky/article/details/106198818)
+
++ [Android Studio 打包APK](https://blog.csdn.net/qq_38436214/article/details/112288954)

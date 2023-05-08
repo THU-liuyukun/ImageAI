@@ -3,6 +3,7 @@ package com.example.baiduai;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -27,6 +28,7 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
     private int checkedRadioButtonId;
     private RadioButton checkedRadioButton;
     private String style_selection;
+    private Button btn_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,8 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
 
         radio_group = findViewById(R.id.style_conversion_radio_group);
 
-        findViewById(R.id.btn_main).setOnClickListener(this);
+        btn_main = findViewById(R.id.btn_main);
+        btn_main.setOnClickListener(this);
 
         initPython();
         py = Python.getInstance();
@@ -60,6 +63,8 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.btn_main:
+                btn_main.setEnabled(false);
+                btn_main.setText(R.string.button_waiting);
                 Thread thread = new Thread(() -> {
                     checkedRadioButtonId = radio_group.getCheckedRadioButtonId();
                     checkedRadioButton = findViewById(checkedRadioButtonId);
@@ -70,7 +75,11 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
                                     new Kwarg("img_base64", base64Image),
                                     new Kwarg("style", style_selection));
                     base64Image = obj1.toJava(String.class);
-                    runOnUiThread(() -> ImageUtils.saveBase64ImageToGallery(v,img2,StyleConversion.this, base64Image));
+                    runOnUiThread(() -> {
+                        btn_main.setEnabled(true);
+                        btn_main.setText(R.string.button_name);
+                        ImageUtils.saveBase64ImageToGallery(v, img2, StyleConversion.this, base64Image);
+                    });
                 });
                 thread.start();
                 break;
