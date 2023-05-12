@@ -12,7 +12,15 @@
 
 这个APP只是作者的一个作业，在使用上有很多不足需要改进，望海涵！
 
-## 1. 关于前端设计
+## 1. 运行配置
+
++ Android Gradle Plugin Version：7.1.2
++ Gradle Version：7.2
++ Compile Sdk version：33
++ Gradle JDK：17
++ Python：3.8
+
+## 2. 关于前端设计
 
 所有的设计使用的都是[Material Design 2](https://m2.material.io/)
 
@@ -32,7 +40,7 @@
 
 + Button
 
-## 2. 关于Python部分
+## 3. 关于Python部分
 
 这里调用了百度AI提供的API实现对图片进行AI处理，个人觉得Java提交请求不如Python来的更方便（并且本人并不是很擅长写Java）。
 
@@ -40,7 +48,7 @@
 
 所有的Python脚本都封装好以后，只需要调用对应脚本的main方法就可以调用功能。但是还有个问题，人脸检测画图需要在图片上画图，但是传入的是Base64，我先将其转换成二进制数据，然后再转换成Numpy数组，用cv2.imdecode来读取图片。
 
-## 3. 关于Java部分
+## 4. 关于Java部分
 
 这个部分对于不擅长Java的我来说，真的是很艰难，也算是锻炼自己的能力了。
 
@@ -80,7 +88,7 @@ Android studio虚拟机的相册没有存取的权限，即无法显示Device Fi
 
 将发送请求、显示图片这两个耗时任务放到子线程中，并在获取完结果后，将结果传递回UI线程，最后在UI线程中更新ImageView的显示。
 
-## 4. APK压缩
+## 5. APK压缩
 
 起初这个APK的大小达到了64MB，经过压缩以后，变成现在的33MB。
 
@@ -92,7 +100,7 @@ APK压缩参考：
 
 + [Android Apk瘦身优化](https://www.jianshu.com/p/ed03e75be736)
 
-## 5. 一些解决Android问题的参考资源
+## 6. 一些解决Android问题的参考资源
 
 + [Android Studio模拟器联网](https://blog.csdn.net/AngryPotatoLucky/article/details/106198818)
 
