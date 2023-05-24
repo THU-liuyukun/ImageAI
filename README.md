@@ -4,7 +4,7 @@
 
 # ImageAI：一个对图片进行AI处理的APP
 
-**APP下载：** [ImageAI.apk](https://github.com/SolitudeFate/ImageAI/releases/download/v2.0/ImageAI.apk)
+**APP下载：** [ImageAI.apk](https://github.com/SolitudeFate/ImageAI/blob/main/app/release/ImageAI.apk)
 
 ## 0. 关于本项目
 
