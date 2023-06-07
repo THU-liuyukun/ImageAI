@@ -1,5 +1,5 @@
 <div  align="center">    
-  <img src="imgs/page1.jpg" alt="APP页面展示" align="center" width="40%">
+  <img src="./imgs/page1.jpg" alt="APP页面展示" align="center" width="40%">
 </div>
 
 # ImageAI：一个对图片进行AI处理的APP
