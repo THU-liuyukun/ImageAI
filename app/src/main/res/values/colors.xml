@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey_700">#FF616161</color>
     <color name="grey_900">#FF212121</color>
+    <!--透明-->
+    <color name="transparent">#00000000</color>
+    <!--半透明-->
+    <color name="translucent">#22050505</color>
 </resources>

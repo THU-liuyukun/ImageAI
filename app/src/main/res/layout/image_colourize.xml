@@ -13,7 +13,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="200dp"
             android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -32,7 +32,7 @@
                     android:id="@+id/topAppBarImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/spiderman"
+                    android:src="@drawable/bg"
                     android:scaleType="centerCrop"
                     android:fitsSystemWindows="true" />
 

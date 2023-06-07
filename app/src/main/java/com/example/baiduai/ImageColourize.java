@@ -14,6 +14,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
+import com.example.baiduai.utils.StatusBar;
 import com.example.baiduai.utils.ToolbarUtils;
 
 public class ImageColourize extends AppCompatActivity implements View.OnClickListener {
@@ -27,6 +28,10 @@ public class ImageColourize extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StatusBar statusBar = new StatusBar(ImageColourize.this);
+        statusBar.setColor(R.color.transparent);
+
         setContentView(R.layout.image_colourize);
 
         // 加载topAppBar

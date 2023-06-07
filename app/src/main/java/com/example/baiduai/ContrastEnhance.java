@@ -14,6 +14,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
+import com.example.baiduai.utils.StatusBar;
 import com.example.baiduai.utils.ToolbarUtils;
 
 public class ContrastEnhance extends AppCompatActivity implements View.OnClickListener {
@@ -27,6 +28,10 @@ public class ContrastEnhance extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StatusBar statusBar = new StatusBar(ContrastEnhance.this);
+        statusBar.setColor(R.color.transparent);
+
         setContentView(R.layout.contrast_enhance);
 
         // 加载topAppBar

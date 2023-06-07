@@ -15,6 +15,7 @@ import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
 import com.example.baiduai.utils.PermissionUtils;
+import com.example.baiduai.utils.StatusBar;
 import com.example.baiduai.utils.ToolbarUtils;
 
 public class FaceDetection extends AppCompatActivity implements View.OnClickListener {
@@ -29,6 +30,17 @@ public class FaceDetection extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StatusBar statusBar = new StatusBar(FaceDetection.this);
+        //设置颜色为半透明
+        //statusBar.setColor(R.color.translucent);
+
+        //设置颜色为透明
+        statusBar.setColor(R.color.transparent);
+
+        //隐藏状态栏
+        //statusBar.hide();
+
         setContentView(R.layout.face_detection);
 
         // 权限申请

@@ -16,6 +16,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
+import com.example.baiduai.utils.StatusBar;
 import com.example.baiduai.utils.ToolbarUtils;
 
 public class StyleConversion extends AppCompatActivity implements View.OnClickListener {
@@ -33,6 +34,10 @@ public class StyleConversion extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StatusBar statusBar = new StatusBar(StyleConversion.this);
+        statusBar.setColor(R.color.transparent);
+
         setContentView(R.layout.style_conversion);
 
         // 加载topAppBar

@@ -2,7 +2,6 @@ package com.example.baiduai;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +15,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.example.baiduai.utils.ImagePickerUtils;
 import com.example.baiduai.utils.ImageUtils;
+import com.example.baiduai.utils.StatusBar;
 import com.example.baiduai.utils.ToolbarUtils;
 import com.google.android.material.slider.Slider;
 
@@ -32,6 +32,10 @@ public class ImageDenoise extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StatusBar statusBar = new StatusBar(ImageDenoise.this);
+        statusBar.setColor(R.color.transparent);
+
         setContentView(R.layout.image_denoise);
 
         // 加载topAppBar
